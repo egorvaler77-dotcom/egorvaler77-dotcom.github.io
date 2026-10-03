@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Набор модераторов</title>
+    
+    <style>
+        :root {
+            --primary-color: #00d1b7;
+            --dark-bg: #0b0b0b;
+            --card-bg: #1a1a1a;
+            --text-light: #f0f0f0;
+            --text-medium: #a0a0a0;
+            --border-color: #333333;
+            --success-color: #00ff00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--border-color);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-medium);
+            font-size: 0.95em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #181818;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1em;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 209, 183, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: var(--primary-color);
+            color: #000;
+            font-weight: bold;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #00b09b;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .required {
+            color: var(--primary-color);
+        }
+
+        .success-screen {
+            text-align: center;
+            display: none;
+        }
+
+        .log-box {
+            background-color: #000000;
+            color: var(--success-color);
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+            margin-top: 20px;
+            font-size: 0.85em;
+            border: 1px solid var(--success-color);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="form-container">
+        <h1>Набор модераторов</h1>
+        <p class="subtitle">Заполните форму, чтобы присоединиться к команде</p>
+
+        <!-- 
+            ВАЖНО: Замените ссылку ниже на ту, что выдал вам Forminit 
+            (пример: https://forminit.com/f/abc123def456)
+        -->
+        <form action="https://forminit.com/f/call93a70lt" method="POST" id="application-form">
+            
+            <!-- 
+                Скрытое поле для email. Forminit требует поле с префиксом fi-sender-email.
+                Замените admin@example.com на вашу почту, куда должны приходить заявки.
+            -->
+            <input type="hidden" name="fi-sender-email" value="admin@example.com">
+
+            <div class="form-group">
+                <label for="nickname">Никнейм <span class="required">*</span></label>
+                <!-- ВАЖНО: name изменен на fi-text-nickname -->
+                <input type="text" id="nickname" name="fi-text-nickname" placeholder="Например: GigaChat" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Возраст <span class="required">*</span></label>
+                <!-- ВАЖНО: name изменен на fi-text-age -->
+                <input type="number" id="age" name="fi-text-age" min="16" placeholder="18+" required>
+            </div>
+
+            <div class="form-group">
+                <label for="discord">Discord <span class="required">*</span></label>
+                <!-- ВАЖНО: name изменен на fi-text-discord -->
+                <input type="text" id="discord" name="fi-text-discord" placeholder="Никнейм#1234" required>
+            </div>
+
+            <div class="form-group">
+                <label for="timezone">Часовой пояс <span class="required">*</span></label>
+                <!-- ВАЖНО: name изменен на fi-text-timezone -->
+                <input type="text" id="timezone" name="fi-text-timezone" placeholder="МСК (UTC+3)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="experience">Опыт модерации</label>
+                <!-- ВАЖНО: name изменен на fi-text-experience -->
+                <select id="experience" name="fi-text-experience">
+                    <option value="Нет опыта">Нет опыта</option>
+                    <option value="До 1 года">До 1 года</option>
+                    <option value="1-3 года">1-3 года</option>
+                    <option value="Более 3 лет">Более 3 лет</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="reason">Почему вы хотите стать модератором? <span class="required">*</span></label>
+                <!-- ВАЖНО: name изменен на fi-text-reason -->
+                <textarea id="reason" name="fi-text-reason" placeholder="Расскажите о своем опыте и мотивации..." required></textarea>
+            </div>
+
+            <button type="submit">Отправить заявку</button>
+        </form>
+    </div>
+
+    <!-- Экран успешной отправки -->
+    <div class="success-screen" id="success-screen">
+        <h1 style="color: #00ff00;">[STATUS: ACCEPTED]</h1>
+        <p>Данные переданы в систему.</p>
+        <div class="log-box">
+&gt; Connecting to Forminit API...
+&gt; Authenticating sender...
+&gt; Parsing fields: [fi-text-nickname, fi-text-age, fi-text-discord, fi-text-timezone, fi-text-experience, fi-text-reason]
+&gt; Validating fi-sender-email...
+&gt; Status: 200 OK
+&gt; Log entry created: /var/log/forms/success_[timestamp].log
+&gt; Handshake terminated.
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('application-form');
+        const formContainer = document.getElementById('form-container');
+        const successScreen = document.getElementById('success-screen');
+        const nicknameInput = document.getElementById('nickname');
+
+        form.addEventListener('submit', function(event) {
+            setTimeout(() => {
+                // Проверяем, не перенаправил ли нас сервис на свою страницу
+                if (!window.location.href.includes('forminit.com/thank-you')) {
+                    // Если мы все еще на своей странице, показываем свой лог
+                    event.preventDefault(); 
+                    
+                    const logBox = document.querySelector('.log-box');
+                    logBox.innerHTML = logBox.innerHTML.replace('[timestamp]', Date.now());
+                    
+                    formContainer.style.display = 'none';
+                    successScreen.style.display = 'block';
+                }
+            }, 1500);
+        });
+    </script>
+
+</body>
+</html>
